@@ -2,11 +2,12 @@
 
 const request = require('request');
 
-module.exports = function(link) {
+module.exports = function(link, callback) {
   request(link, function (error, response, body) {
     if (error) throw error;
-    process.stdout.write(body);
-    process.stdout.write('\nprompt > ')
+    callback(body)
+    
+    
   })
 
 }

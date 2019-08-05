@@ -1,6 +1,8 @@
+//const callback = require('./bash');
 
+module.exports = function(callback) {
+  callback(process.cwd());
 
-module.exports = function() {
-  process.stdout.write(process.cwd());
-  process.stdout.write('\nprompt > ');
+  
+  
 }

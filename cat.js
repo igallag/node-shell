@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 
-module.exports = function(fileName) {
+module.exports = function(fileName, callback) {
 
     fs.readdir('./', 'utf8', (err, files) => {
         if (err) throw err;
@@ -11,8 +11,9 @@ module.exports = function(fileName) {
             if (files[i] === fileName) {
                 fs.readFile(fileName, (err, data) => {
                     if (err) throw err;
-                    process.stdout.write(data);
-                    process.stdout.write('\nprompt > ');
+                    callback(data)
+                    
+                    
                 });
 
 

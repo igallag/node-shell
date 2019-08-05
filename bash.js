@@ -7,6 +7,12 @@ const cat = require('./cat');
 const curl = require('./curl');
 
 //console.log(cat)
+
+const done = (output) => {
+    process.stdout.write(output);
+    process.stdout.write('\nprompt > ')
+}
+
 process.stdin.on('data', (data) => {
     const cmd = data.toString().trim();
 
@@ -20,20 +26,20 @@ process.stdin.on('data', (data) => {
 
     //process.stdout.write('You typed: ' + cmd);
     if (command === 'pwd') {
-        pwd();
+        pwd(done);
     }
 
     if (command === 'ls') {
-        ls();
+        ls(done);
     }
 
     if (command === 'cat') {
-        cat(arg);
+        cat(arg , done);
     }
 
     if (command === 'curl') {
-        console.log(arg);
-        curl(arg)
+        //console.log(arg);
+        curl(arg, done);
     }
 
     //process.stdout.write('\nprompt > ');
